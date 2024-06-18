@@ -1,8 +1,11 @@
-import inquirer from "inquirer";
-let myBalance = 25000;
-let pinCode = 1974;
+#! usr/bin/env node
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var inquirer_1 = require("inquirer");
+var myBalance = 25000;
+var pinCode = 1974;
 // for enter pin code
-let pinAnswer = await inquirer.prompt([
+var pinAnswer = await inquirer_1.default.prompt([
     {
         name: "pin",
         message: "enter your 4 digit pin code",
@@ -11,7 +14,7 @@ let pinAnswer = await inquirer.prompt([
 ]);
 if (pinAnswer.pin === 1974) {
     console.log("welcome! You are succesfuly logged in ");
-    let options = await inquirer.prompt([
+    var options = await inquirer_1.default.prompt([
         // for options to perform action
         {
             name: "choices",
@@ -22,7 +25,7 @@ if (pinAnswer.pin === 1974) {
     ]);
     // for perform fast cash
     if (options.choices === "Fast Cash") {
-        let fastCash = await inquirer.prompt([
+        var fastCash = await inquirer_1.default.prompt([
             {
                 name: "cash",
                 message: "Please select option",
@@ -32,13 +35,13 @@ if (pinAnswer.pin === 1974) {
         ]);
         if (fastCash.cash == 1000 || fastCash.cash == 5000 || fastCash.cash == 10000 || fastCash.cash == 15000) {
             myBalance -= fastCash.cash;
-            console.log(`Your withdrawl Amount is = ${fastCash.cash}`);
-            console.log(` Your Remaining Balance is = ${myBalance}`);
+            console.log("Your withdrawl Amount is = ".concat(fastCash.cash));
+            console.log(" Your Remaining Balance is = ".concat(myBalance));
         }
     }
     // for perform withdraw
     else if (options.choices === "Withdraw") {
-        let withDraw = await inquirer.prompt([
+        var withDraw = await inquirer_1.default.prompt([
             {
                 name: "cash",
                 message: "Please enter your amount =",
@@ -47,8 +50,8 @@ if (pinAnswer.pin === 1974) {
         ]);
         if (withDraw.cash <= myBalance) {
             myBalance -= withDraw.cash;
-            console.log(`Your Withdrawl Amount is = ${withDraw.cash}`);
-            console.log(` Your Remaining Balance is = ${myBalance}`);
+            console.log("Your Withdrawl Amount is = ".concat(withDraw.cash));
+            console.log(" Your Remaining Balance is = ".concat(myBalance));
         }
         else {
             console.log("You Have Insufficient Balance!");
@@ -56,7 +59,7 @@ if (pinAnswer.pin === 1974) {
     }
     // for perform check balane amount
     else if (options.choices === "Check Balance") {
-        console.log(`Your Current Balance is = ${myBalance}`);
+        console.log("Your Current Balance is = ".concat(myBalance));
     }
 }
 else {

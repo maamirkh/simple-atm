@@ -1,3 +1,4 @@
+#! usr/bin/env node
 import inquirer from "inquirer"
 let myBalance: number = 25000;
 let pinCode: number = 1974
